@@ -26,7 +26,11 @@
         <rrOperation :crud="crud" />
       </div>
       <!--如果想在工具栏加入更多按钮，可以使用插槽方式， slot = 'left' or 'right'-->
-      <crudOperation :permission="permission" />
+      <crudOperation :permission="permission">
+        <slot>
+          <el-button type="info">刷新表</el-button>
+        </slot>
+      </crudOperation>
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="500px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
@@ -132,12 +136,13 @@
           </template>
         </el-table-column>
         <el-table-column prop="remark" label="备注" />
-        <el-table-column v-permission="['admin','dwSchemaInfo:edit','dwSchemaInfo:del']" label="操作" width="150px" align="center">
+        <el-table-column v-permission="['admin','dwSchemaInfo:edit','dwSchemaInfo:del']" label="操作" width="200px" align="center">
           <template slot-scope="scope">
             <udOperation
               :data="scope.row"
               :permission="permission"
             />
+            <el-button type="info">刷新</el-button>
           </template>
         </el-table-column>
       </el-table>
