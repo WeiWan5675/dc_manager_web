@@ -2,7 +2,7 @@ module.exports = {
   /**
    * @description 网站标题
    */
-  title: 'EL-ADMIN',
+  title: '数据中台管理系统',
   /**
    * @description 是否显示 tagsView
    */
@@ -26,7 +26,7 @@ module.exports = {
   /**
    * @description token key
    */
-  TokenKey: 'EL-ADMIN-TOEKN',
+  TokenKey: 'easylife-dc_manager_token',
   /**
    * @description 请求超时时间，毫秒（默认2分钟）
    */
@@ -42,9 +42,9 @@ module.exports = {
   /**
    * 底部文字，支持html语法
    */
-  footerTxt: '© 2019 Zheng Jie <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>',
+  footerTxt: 'Copyright2017© 优选好生活科技有限公司 <a href="https://www.lifeat.cn/" target="_blank">备案号</a>',
   /**
    * 备案号
    */
-  caseNumber: '浙ICP备18005431号'
+  caseNumber: ' 京ICP备17032657号'
 }

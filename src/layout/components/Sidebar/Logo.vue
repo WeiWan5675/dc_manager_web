@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: 'ELADMIN-后台管理',
+      title: '好生活数据中台管理系统',
       logo: Logo
     }
   }
