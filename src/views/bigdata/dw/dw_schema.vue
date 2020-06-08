@@ -26,11 +26,7 @@
         <rrOperation :crud="crud" />
       </div>
       <!--如果想在工具栏加入更多按钮，可以使用插槽方式， slot = 'left' or 'right'-->
-      <crudOperation :permission="permission">
-        <slot>
-          <el-button type="info">刷新表</el-button>
-        </slot>
-      </crudOperation>
+      <crudOperation :permission="permission" />
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="500px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
@@ -142,16 +138,20 @@
               :data="scope.row"
               :permission="permission"
             />
-            <el-button type="info">刷新</el-button>
           </template>
         </el-table-column>
+        <el-table-column label="操作2" width="200px" align="center">
+          <template slot-scope="scope">
+            <el-button slot="append" type="primary" size="mini" @click="updateSchemaTables(scope.row)">刷新</el-button>
+          </template>
+        </el-table-column>
+
       </el-table>
       <!--分页组件-->
       <pagination />
     </div>
   </div>
 </template>
-
 <script>
 import crudDwSchemaInfo from '@/api/bigdata/dw/dwSchemaInfo'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
@@ -205,6 +205,9 @@ export default {
     // 钩子：在获取表格数据之前执行，false 则代表不获取数据
     [CRUD.HOOK.beforeRefresh]() {
       return true
+    },
+    updateSchemaTables(row) {
+      alert(1)
     }
   }
 }
