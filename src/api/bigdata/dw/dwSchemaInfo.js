@@ -25,3 +25,11 @@ export function edit(data) {
 }
 
 export default { add, edit, del }
+export function updateTables(data) {
+  console.log(data)
+  return request({
+    url: 'api/bigdata/dw/dwSchemaInfo/updateTables',
+    method: 'get',
+    params: data
+  })
+}

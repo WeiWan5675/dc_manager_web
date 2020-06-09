@@ -142,7 +142,7 @@
         </el-table-column>
         <el-table-column label="操作2" width="200px" align="center">
           <template slot-scope="scope">
-            <el-button slot="append" type="primary" size="mini" @click="updateSchemaTables(scope.row)">刷新</el-button>
+            <el-button slot="append" type="primary" size="mini" @click="refreshButtonClick(scope)">刷新</el-button>
           </template>
         </el-table-column>
 
@@ -159,6 +159,7 @@ import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
+import { updateTables } from '../../../api/bigdata/dw/dwSchemaInfo'
 
 const defaultForm = { id: null, dwSchemaName: null, dwSchemaCode: null, dbType: null, businessLine: null, remark: null, createTime: null, updateTime: null, personLiable: null, submitTime: null, useFlag: null, delFlag: null, dwServerIp: null, dwServerPort: null, dwMetastoreType: null, dwMetastoreUser: null, dwMetastorePass: null }
 export default {
@@ -206,8 +207,12 @@ export default {
     [CRUD.HOOK.beforeRefresh]() {
       return true
     },
-    updateSchemaTables(row) {
-      alert(1)
+    refreshButtonClick(data) {
+      console.log(data.row)
+      // eslint-disable-next-line no-undef
+      updateTables({ id: data.row.id }).then(response => {
+        alert(response)
+      })
     }
   }
 }
